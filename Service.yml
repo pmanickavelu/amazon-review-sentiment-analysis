@@ -1,0 +1,16 @@
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: twitter-sentiment-analysis
+  labels:
+    app: sentiment-analysis
+    role: app
+spec:
+  ports:
+  - port: 80
+    targetPort: http-server
+  selector:
+    app: sentiment-analysis
+    role: app
+  type: LoadBalancer

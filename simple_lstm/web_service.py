@@ -1,4 +1,4 @@
-#!flask/bin/python
+ #!flask/bin/python
 from flask import Flask, request, jsonify
 import numpy as np
 import tensorflow as tf
@@ -56,7 +56,7 @@ def build_results(predicts,o_texts,texts):
         if np.argmax(predicts[i]) == 0:
             sentiment = "Negative"
         elif np.argmax(predicts[i]) == 1:
-            sentiment = "Neutral"
+            sentiment = "Positive"
         
         results.append({
                 "sentiment": sentiment,
@@ -65,6 +65,6 @@ def build_results(predicts,o_texts,texts):
                 })
     return results
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000,debug=os.environ.get("FLAST_DEBUG_MODE"True))
+    app.run(host='0.0.0.0', port=5000,debug=os.environ.get("FLAST_DEBUG_MODE",True))
 
 
